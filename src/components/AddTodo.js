@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { View, TextInput, Button, Alert, StyleSheet } from 'react-native'
+import { View, TextInput, Button, Alert, StyleSheet, Keyboard } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+
+import AppButton from './ui/AppButton'
 
 const AddTodo = ({ onSubmit }) => {
     const [value, setValue] = useState('')
@@ -11,6 +14,7 @@ const AddTodo = ({ onSubmit }) => {
 
         onSubmit(value)
         setValue('')
+        Keyboard.dismiss()
     }
 
     return (
@@ -22,7 +26,10 @@ const AddTodo = ({ onSubmit }) => {
                 placeholder="Введите название"
                 autoCorrect={false}
             />
-            <Button style={styles.button} title="Добавить" onPress={() => onPressHandler()} />
+
+            <AppButton style={styles.button} title="Добавить" onPress={() => onPressHandler()}>
+                <Ionicons name="ios-add" size={20} color="#fff" />
+            </AppButton>
         </View>
     )
 }
@@ -35,7 +42,7 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     input: {
-        width: '70%',
+        width: '75%',
         borderStyle: 'solid',
         borderBottomWidth: 2,
         borderBottomColor: '#3949ab',

@@ -19,7 +19,7 @@ const App = () => {
     { id: '1', title: 'Изучить React Native' },
     { id: '2', title: 'Написать мобильное приложение' }
   ])
-  const [todoId, setTodoId] = useState('1')
+  const [todoId, setTodoId] = useState(null)
   const [ready, setReady] = useState(false)
 
   if (!ready) {
